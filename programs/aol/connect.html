@@ -25,6 +25,7 @@
                 var timeoutThree = setTimeout(done, 1000);
             }
             function done() {
+                window.parent.postMessage("aolconnected", '*');
                 window.close();
             }
             body.style.backgroundImage = "url(aol1.png)";

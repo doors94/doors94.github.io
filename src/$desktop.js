@@ -90,9 +90,13 @@ $("html").on("drop", function (event) {
 		}
 	}
 });
-
+var isAolConnected = false;
 window.addEventListener('message', function (e) {
-
+	if (e.data == "aolconnected") {
+		isAolConnected = true;
+		showMessageBox({iconID: 'info', message: 'AOL has successfully made a connection.'})
+		isAolConnecting = false;
+	}
 });
 
 

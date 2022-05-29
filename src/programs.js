@@ -1228,7 +1228,7 @@ hasOpenedIE = false;
 add_icon_not_via_filesystem({
 	title: "Internet Explorer",
 	iconID: "internet-explorer",
-	open: function () { if (!hasOpenedIE) { hasOpenedIE = true; showMessageBox({iconID: 'info', message: 'Unfortunately Google and DuckDuckGo don\'t allow embeds, so you\'re stuck with Bing.'}); } Explorer("https://bing.com/"); }
+	open: function () { if (isAolConnected) { if (!hasOpenedIE) { hasOpenedIE = true; showMessageBox({iconID: 'info', message: 'Unfortunately Google and DuckDuckGo don\'t allow embeds, so you\'re stuck with Bing.'}); } Explorer("https://bing.com/"); } else { showMessageBox({iconID: 'error', message: 'You are not connected to the internet. Please make a dial-up connection and try again.'}); }}
 });
 add_icon_not_via_filesystem({
 	title: "Paint",
@@ -1296,10 +1296,11 @@ add_icon_not_via_filesystem({
 	open: Pinball,
 	shortcut: true
 });
+var isAolConnecting = false;
 add_icon_not_via_filesystem({
 	title: "Connect to America Online",
 	iconID: "aol",
-	open: AolConnect,
+	open: function () {if (!isAolConnecting && !isAolConnected) {AolConnect(); isAolConnecting = true;} else if (isAolConnecting) { showMessageBox({iconID: 'error', message: 'AOL is already connecting.'}) } else if (isAolConnected) { showMessageBox({iconID: 'error', message: 'AOL is already connected.'}) }},
 	shortcut: true
 });
 
