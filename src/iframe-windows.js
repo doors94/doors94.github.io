@@ -54,25 +54,6 @@ function enhance_iframe(iframe) {
 		// Let the containing page handle keyboard events, with an opportunity to cancel them
 		proxy_keyboard_events(iframe);
 
-		// on Wayback Machine, and iframe's url not saved yet
-		if (iframe.contentDocument.querySelector("#error #livewebInfo.available")) {
-			var message = document.createElement("div");
-			message.style.position = "absolute";
-			message.style.left = "0";
-			message.style.right = "0";
-			message.style.top = "0";
-			message.style.bottom = "0";
-			message.style.background = "#c0c0c0";
-			message.style.color = "#000";
-			message.style.padding = "50px";
-			iframe.contentDocument.body.appendChild(message);
-			message.innerHTML = `<a target="_blank">Save this url in the Wayback Machine</a>`;
-			message.querySelector("a").href =
-				"https://web.archive.org/save/https://98.js.org/" +
-				iframe.src.replace(/.*https:\/\/98.js.org\/?/, "");
-			message.querySelector("a").style.color = "blue";
-		}
-
 		var $contentWindow = $(iframe.contentWindow);
 		$contentWindow.on("pointerdown click", function (e) {
 			iframe.$window && iframe.$window.focus();

@@ -91,6 +91,11 @@ $("html").on("drop", function (event) {
 	}
 });
 
+window.addEventListener('message', function (e) {
+
+});
+
+
 // Despite overflow:hidden on html and body,
 // focusing elements that are partially offscreen can still scroll the page.
 // For example, with opening Paint and moving it partially offscreen and opening Image > Attributes,

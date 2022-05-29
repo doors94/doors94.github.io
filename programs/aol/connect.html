@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Connecting to America Online...</title>
+        <style>
+            html {
+                height: 431px;
+                width: 739px;
+            }
+            body {
+                background-repeat: no-repeat;
+                background-size: auto;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <script>
+            var body = document.getElementById("body");
+            function stageTwo() {
+                body.style.backgroundImage = "url(aol2.png)";
+                var timeoutTwo = setTimeout(stageThree, 500);
+            }
+            function stageThree() {
+                body.style.backgroundImage = "url(aol3.png)";
+                var timeoutThree = setTimeout(done, 1000);
+            }
+            function done() {
+                window.close();
+            }
+            body.style.backgroundImage = "url(aol1.png)";
+            const sound = new Audio("dialup.mp3");
+            sound.play();
+            var timeoutOne = setTimeout(stageTwo, 26279);
+        </script>
+    </body>
+</html>

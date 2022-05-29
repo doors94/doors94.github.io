@@ -964,6 +964,19 @@ function openWinamp(file_path) {
 }
 openWinamp.acceptsFilePaths = true;
 
+function AolConnect() {
+	var $win = make_iframe_window({
+		src: "programs/aol/connect.html",
+		icons: iconsAtTwoSizes("aol"),
+		title: "Connecting to America Online...",
+		innerWidth: 739,
+		innerHeight: 431,
+		resizable: false,
+	});
+	return new Task($win);
+}
+
+
 /*
 function saveAsDialog(){
 	var $win = new $Window();
@@ -1211,10 +1224,11 @@ add_icon_not_via_filesystem({
 	// file_path: "/my-pictures/",
 	is_system_folder: true,
 });
+hasOpenedIE = false;
 add_icon_not_via_filesystem({
 	title: "Internet Explorer",
 	iconID: "internet-explorer",
-	open: function () { Explorer("https://www.google.com/"); }
+	open: function () { if (!hasOpenedIE) { hasOpenedIE = true; showMessageBox({iconID: 'info', message: 'Unfortunately Google and DuckDuckGo don\'t allow embeds, so you\'re stuck with Bing.'}); } Explorer("https://bing.com/"); }
 });
 add_icon_not_via_filesystem({
 	title: "Paint",
@@ -1280,6 +1294,12 @@ add_icon_not_via_filesystem({
 	title: "Pinball",
 	iconID: "pinball",
 	open: Pinball,
+	shortcut: true
+});
+add_icon_not_via_filesystem({
+	title: "Connect to America Online",
+	iconID: "aol",
+	open: AolConnect,
 	shortcut: true
 });
 

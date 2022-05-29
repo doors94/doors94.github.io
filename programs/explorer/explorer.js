@@ -274,20 +274,7 @@ var resolve_address = async function (address) {
 	var drive_match = address.match(/^\(?([a-z]):\)?[/\\]?\)?$/i);
 	var zone = "unknown";
 	function handle_url_case() {
-		if (!address.match(/^https?:\/\/web.archive.org\//) && !address.startsWith(window.location.origin)) {
-			// special exemption: show archive but later version
-			if (address.match(/^https?:\/\/(www\.)?(windows93.net)/)) {
-				address = "https://web.archive.org/web/2015-05-05/" + address;
-			// complete exemptions:
-			} else if (
-				!address.match(/^https?:\/\/(www\.)?(copy.sh|topotech.github.io\/interdimensionalcable|isaiahodhner.io|brie.fi\/ng)/) &&
-				!address.match(/^(file|data|blob):\/\//)
-			) {
-				address = "https://web.archive.org/web/1998/" + address;
-			}
-		}
 		is_url = true;
-		// zone = address.startsWith(window.location.origin) ? "local" : "internet"; // @TODO
 		zone = "internet";
 		return { normalized_address: address, is_url, zone };
 	}
@@ -961,7 +948,7 @@ function can_go_up() {
 }
 
 function go_home() {
-	go_to("https://isaiahodhner.io/"); // My personal homepage; I might use a search engine, but they don't support iframes
+	go_to("https://bing.com/");
 }
 
 function executeFile(file_path) {

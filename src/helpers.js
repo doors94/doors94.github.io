@@ -37,7 +37,6 @@ var DESKTOP_ICON_SIZE = 32;
 var TASKBAR_ICON_SIZE = 16;
 var TITLEBAR_ICON_SIZE = 16;
 
-// For Wayback Machine, match URLs like https://web.archive.org/web/20191213113214/https://98.js.org/
 // (also match URLs like https://98.js.org/ because why not)
 const web_server_root_for_icons =
 	location.href.match(/98.js.org/) ?
