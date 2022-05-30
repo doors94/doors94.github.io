@@ -45,6 +45,7 @@ conn.onmessage = function(event) {
         window.parent.postMessage("mimusernametaken", '*');
     }
 };
+conn.close = function(){connErr();};
 function logon() {
     if (usernameBox.value == "") {
         return;
