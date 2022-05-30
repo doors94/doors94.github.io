@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>AOL Instant Messenger</title>
+        <meta charset="UTF-8"/>
+        <style>
+            html {
+                font-family: sans-serif;
+            }
+            div#loginwindow {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+            }
+            div#loginwindow input {
+                margin-left: 50px;
+            }
+            div#loginwindow div.logobox * {
+                display: inline;
+                vertical-align: middle;
+            }
+            div#loginwindow span.usernamespan {
+                margin-left: 50px;
+            }
+            div#chatwindow {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                width: 99%;
+                height: 100%;
+            }
+            div#chatlog {
+                margin: 0;
+                padding: 0;
+                height: 95%;
+                width: 100%;
+                border: 1px solid gray;
+            }
+            div#msgbox {
+                margin: 0;
+                padding: 0;
+                height: 5%;
+                width: 100%;
+                border: 1px solid gray;
+            }
+            input#chatinput {
+                margin: 0;
+                padding: 0;
+                width: 80%;
+            }
+        </style>
+    </head>
+    <body id="body" style="display: none;">
+        <div id="loginwindow">
+            <div class="logobox">
+                <img src="Aim-icon.png" height=150 width=150 /><span>Microhard Instant Messenger</span><br/>
+            </div>
+            <span class="usernamespan">Username</span><br/>
+            <input type="text" id="usernamefield"/>
+            <button onclick="logon()">Log In</button>
+        </div>
+        <div id="chatwindow">
+            <div id="chatlog">
+            </div>
+            <div id="msgbox">
+                <input type="text" id="chatinput"/><button onclick="sendMsg()">Send</button>
+            </div>
+        </div>
+        <script src="mim.js"></script>
+    </body>
+</html>

@@ -90,16 +90,27 @@ $("html").on("drop", function (event) {
 		}
 	}
 });
-var isAolConnected = false;
+var $_GET = [];
+window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){$_GET[name]=value;});
+var isAolConnected
+if ($_GET['aolskip'] === undefined) {
+	isAolConnected = false;
+} else {
+	isAolConnected = true;
+}
 window.addEventListener('message', function (e) {
 	if (e.data == "aolconnected") {
 		isAolConnected = true;
-		showMessageBox({iconID: 'info', message: 'AOL has successfully made a connection.'})
+		showMessageBox({iconID: 'info', message: 'AOL has successfully made a connection.'});
 		isAolConnecting = false;
 	}
+	if (e.data == "mimconnerr") {
+		showMessageBox({iconID: 'error', message: 'Failed to connect to Microhard Instant Messenger. It may be down.'});
+	}
+	if (e.data == "mimusernametaken") {
+		showMessageBox({iconID: 'error', message: 'That username is taken.'});
+	}
 });
-
-
 // Despite overflow:hidden on html and body,
 // focusing elements that are partially offscreen can still scroll the page.
 // For example, with opening Paint and moving it partially offscreen and opening Image > Attributes,

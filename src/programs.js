@@ -976,7 +976,17 @@ function AolConnect() {
 	return new Task($win);
 }
 
-
+function microhardIM() {
+	var $win = make_iframe_window({
+		src: "programs/aim/index.html",
+		icons: iconsAtTwoSizes("mim"),
+		title: "Microhard Instant Messenger",
+		innerWidth: 400,
+		innerHeight: 600,
+		resizable: false,
+	});
+	return new Task($win);
+}
 /*
 function saveAsDialog(){
 	var $win = new $Window();
@@ -1303,7 +1313,11 @@ add_icon_not_via_filesystem({
 	open: function () {if (!isAolConnecting && !isAolConnected) {AolConnect(); isAolConnecting = true;} else if (isAolConnecting) { showMessageBox({iconID: 'error', message: 'AOL is already connecting.'}) } else if (isAolConnected) { showMessageBox({iconID: 'error', message: 'AOL is already connected.'}) }},
 	shortcut: true
 });
-
+add_icon_not_via_filesystem({
+	title: "Microhard Instant Messenger",
+	iconID: "mim",
+	open: function () { if (isAolConnected) { microhardIM(); } else { showMessageBox({iconID: 'error', message: 'You are not connected to the internet. Please make a dial-up connection and try again.'}); }}
+});
 folder_view.arrange_icons();
 
 function iconsAtTwoSizes(iconID) {
