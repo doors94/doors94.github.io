@@ -36,7 +36,7 @@ conn.onmessage = function(event) {
         var sender = rawmsg.substring(0, rawmsg.indexOf(","));
         var msg = rawmsg.substring(rawmsg.indexOf(",") + 1);
         var el = document.createElement("div");
-        el.style.class = "chatmsg";
+        el.classList.add("chatmsg");
         el.innerHTML = "<strong>" + sender + "&gt;</strong> " + msg;
         chatLog.appendChild(el);
         msgSound.play();
