@@ -6,7 +6,7 @@ const loginWindow = document.getElementById("loginwindow");
 const chatWindow = document.getElementById("chatwindow");
 const chatLog = document.getElementById("chatlog");
 var hostname = "forkievm.ddns.net";
-var conn = new WebSocket("ws://" + hostname + ":6003");
+var conn = new WebSocket("wss://" + hostname + ":6003");
 const connTimeout = setTimeout(connErr, 10000);
 var username;
 var loggedIn;
