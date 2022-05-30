@@ -40,6 +40,7 @@ conn.onmessage = function(event) {
         el.innerHTML = "<strong>" + sender + "&gt;</strong> " + msg;
         chatLog.appendChild(el);
         msgSound.play();
+        chatLog.scrollTop = chatLog.scrollHeight;
     }
     if (event.data == "usernametaken") {
         window.parent.postMessage("mimusernametaken", '*');
