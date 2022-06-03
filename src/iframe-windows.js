@@ -137,7 +137,7 @@ function make_iframe_window(options) {
 	options.resizable ??= true;
 	var $win = new $Window(options);
 
-	var $iframe = $win.$iframe = $("<iframe>").attr({ src: options.src });
+	var $iframe = $win.$iframe = $("<iframe>");
 	enhance_iframe($iframe[0]);
 	$win.$content.append($iframe);
 	var iframe = $win.iframe = $iframe[0];
@@ -145,7 +145,11 @@ function make_iframe_window(options) {
 	// where all is $window needed?
 	// I know it's used from within the iframe contents as frameElement.$window
 	iframe.$window = $win;
-
+	if (options.content !== undefined) {
+		iframe.contentWindow.document.write(options.content);
+	} else {
+		iframe.src = options.src
+	}
 	$iframe.on("load", function () {
 		$win.show();
 		$win.focus();

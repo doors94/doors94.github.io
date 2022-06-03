@@ -1318,6 +1318,11 @@ add_icon_not_via_filesystem({
 	iconID: "mim",
 	open: function () { if (isAolConnected) { microhardIM(); } else { showMessageBox({iconID: 'error', message: 'You are not connected to the internet. Please make a dial-up connection and try again.'}); }}
 });
+add_icon_not_via_filesystem({
+	title: "PC Health Check",
+	iconID: "vue-win3.1",
+	open: function () { showMessageBox({iconID: 'error', message: 'Your PC does not meet the minimum system requirements for Doors 95 and will not be able to upgrade when it releases in 2139. Don\'t worry, you\'ll continue to recieve updates until Doors 94 support ends in 2142.', title: "Doors 95 PC Health Checker"});}
+});
 folder_view.arrange_icons();
 
 function iconsAtTwoSizes(iconID) {
