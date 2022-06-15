@@ -139,6 +139,7 @@ function make_iframe_window(options) {
 
 	var $iframe = $win.$iframe = $("<iframe>");
 	enhance_iframe($iframe[0]);
+	iframe.sandbox = "allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts";
 	$win.$content.append($iframe);
 	var iframe = $win.iframe = $iframe[0];
 	// TODO: should I instead of having iframe.$window, have a get$Window type of dealio?
